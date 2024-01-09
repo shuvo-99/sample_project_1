@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import HomePage from "./routes/HomePage";
 import Dragons from "./views/dragons/Dragons";
+import Rockets from "./views/rockets/Rockets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const rootElement = document.getElementById("root");
 
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/dragonList",
         element: <Dragons></Dragons>,
+      },
+      {
+        path: "/rocketList",
+        element: <Rockets></Rockets>,
       },
     ],
   },
