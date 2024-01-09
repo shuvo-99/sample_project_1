@@ -26,10 +26,19 @@ const Navbar = () => {
             <Link to="/">
               <Button style={{ color: "white" }}>Home</Button>
             </Link>
+            <Link to="/dragonList">
+              <Button style={{ color: "white" }}>Dragons</Button>
+            </Link>
+            <Link to="/missionList">
+              <Button style={{ color: "white" }}>Missions</Button>
+            </Link>
+            <Link to="/rocketList">
+              <Button style={{ color: "white" }}>Rockets</Button>
+            </Link>
           </Typography>
-          <Link to="/createUser">
+          {/* <Link to="/createUser">
             <Button style={{ color: "white" }}>Add User</Button>
-          </Link>
+          </Link> */}
         </Toolbar>
       </AppBar>
     </Box>
