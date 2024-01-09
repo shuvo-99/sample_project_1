@@ -26,8 +26,8 @@ const Rockets = () => {
             <TableCell align="center">Active Status</TableCell>
             <TableCell align="center">Stages</TableCell>
             <TableCell align="center">Boosters</TableCell>
-            <TableCell align="center">Cost_per_launch</TableCell>
-            <TableCell align="center">Success_rate_pct</TableCell>
+            <TableCell align="center">Cost Per Launch</TableCell>
+            <TableCell align="center">Success Rate</TableCell>
             <TableCell align="center">First Flight</TableCell>
             <TableCell align="center">Country</TableCell>
             <TableCell align="center">Company</TableCell>
