@@ -7,7 +7,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import FlagCircleIcon from "@mui/icons-material/FlagCircle";
-import HomeIcon from "@mui/icons-material/Home";
+
 import RocketIcon from "@mui/icons-material/Rocket";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Link } from "react-router-dom";

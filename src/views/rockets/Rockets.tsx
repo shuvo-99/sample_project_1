@@ -11,8 +11,9 @@ import {
 import UseGetRocketList from "../../hooks/query/useGetRocketList";
 
 const Rockets = () => {
-  const re = UseGetRocketList();
-  const rocketList = re.rocketList;
+  const { rocketList } = UseGetRocketList();
+
+  // const rocketList = re.rocketList;
   return (
     <TableContainer component={Paper}>
       <Typography variant="h3" component="div" align="center">
