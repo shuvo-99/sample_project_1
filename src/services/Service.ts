@@ -1,1 +1,1 @@
-import axiosService from "../utiles/axiosService";
+import axiosService from "../utils/axiosService";
