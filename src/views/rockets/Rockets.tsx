@@ -10,6 +10,8 @@ import {
 } from "@mui/material";
 
 const Rockets = () => {
+  const re = UseGetRocketList();
+  console.log(re);
   return (
     <TableContainer component={Paper}>
       <Typography variant="h3" component="div" align="center">
