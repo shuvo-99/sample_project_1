@@ -10,3 +10,17 @@ export interface DragonResponse {
   dry_mass_lb: number;
   first_flight: string;
 }
+
+export interface RocketResponse {
+
+  id: number,
+  active: false,
+   stages : number,
+   boosters : number,
+   cost_per_launch : number,
+   success_rate_pct : number,
+   first_flight : string,
+   country : string,
+   company : string,
+  
+}

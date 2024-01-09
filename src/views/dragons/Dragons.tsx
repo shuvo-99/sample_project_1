@@ -11,6 +11,16 @@ import { Link } from "react-router-dom";
 import { Button, Box } from "@mui/material";
 
 import UseGetDragonList from "../../hooks/query/useGetDragonList";
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
 
 const Dragons = () => {
   const re = UseGetDragonList();
