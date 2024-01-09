@@ -3,7 +3,11 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import HomePage from "./routes/HomePage";
+import Dragons from "./views/dragons/Dragons";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const rootElement = document.getElementById("root");
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter([
   {
@@ -14,6 +18,10 @@ const router = createBrowserRouter([
         path: "/",
         element: <div>Hello</div>,
       },
+      {
+        path: "/dragonList",
+        element: <Dragons></Dragons>,
+      },
     ],
   },
 ]);
@@ -21,7 +29,9 @@ const router = createBrowserRouter([
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
-      <RouterProvider router={router} />
+      <QueryClientProvider client={queryClient}>
+        <RouterProvider router={router} />
+      </QueryClientProvider>
     </React.StrictMode>
   );
 } else {
