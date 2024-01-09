@@ -13,7 +13,7 @@ export interface DragonResponse {
 
 export interface RocketResponse {
   id: number;
-  active: boolean;
+  active: false;
   stages: number;
   boosters: number;
   cost_per_launch: number;
@@ -21,4 +21,13 @@ export interface RocketResponse {
   first_flight: string;
   country: string;
   company: string;
+}
+
+export interface MissionResponse {
+  mission_name: string;
+  mission_id: string;
+  wikipedia: string;
+  website: string;
+  twitter: string;
+  description: string;
 }
