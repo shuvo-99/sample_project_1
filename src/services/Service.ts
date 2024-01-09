@@ -9,7 +9,6 @@ export const getDragonList = async () => {
   return response?.data;
 };
 
-
 export const getRocketList = async () => {
   const response = await axiosService({
     url: `/v3/rockets`,
@@ -17,4 +16,13 @@ export const getRocketList = async () => {
   });
   console.log(response?.data);
   return response?.data;
-}
+};
+
+export const getMissionList = async () => {
+  const response = await axiosService({
+    url: `/v3/missions`,
+    method: "get",
+  });
+  console.log(response?.data);
+  return response?.data;
+};

@@ -7,7 +7,6 @@ import Dragons from "./views/dragons/Dragons";
 import Rockets from "./views/rockets/Rockets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Missions from "./views/missions/Missions";
-import Rockets from "./views/rockets/Rockets";
 const rootElement = document.getElementById("root");
 
 const queryClient = new QueryClient();
