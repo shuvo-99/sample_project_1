@@ -6,6 +6,7 @@ import HomePage from "./routes/HomePage";
 import Dragons from "./views/dragons/Dragons";
 import Rockets from "./views/rockets/Rockets";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Missions from "./views/missions/Missions";
 const rootElement = document.getElementById("root");
 
 const queryClient = new QueryClient();
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: "/rocketList",
         element: <Rockets></Rockets>,
+      },
+      {
+        path: "/missionList",
+        element: <Missions></Missions>,
       },
     ],
   },
