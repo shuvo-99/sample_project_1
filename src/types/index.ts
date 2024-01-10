@@ -31,3 +31,17 @@ export interface MissionResponse {
   twitter: string;
   description: string;
 }
+
+
+export interface UserRequest {
+  userName :  string  ;
+   firstName :  string  ;
+   lastName :  string  ;
+   email :  string  ;
+   password :  string  ;
+   contactNo :  string  ;   
+   dob : Date  ;
+   isSuperuser :boolean ;
+   address : string  ;
+   roles :string;
+}

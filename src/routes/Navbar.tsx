@@ -11,8 +11,25 @@ import FlagCircleIcon from "@mui/icons-material/FlagCircle";
 import RocketIcon from "@mui/icons-material/Rocket";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Link } from "react-router-dom";
+import { Modal } from "@mui/material";
+import { useState } from "react";
+import { Formik, Field, Form, FormikHelpers } from "formik";
+import CreateModal from "../views/modal/CreateModal";
 
 const Navbar = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const handleSubmit = (values) => {
+    console.log("Form values:", values);
+    setOpenModal(false);
+  };
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#616f71" }}>
@@ -55,9 +72,11 @@ const Navbar = () => {
               </Button>
             </Link>
           </Typography>
-          {/* <Link to="/createUser">
-            <Button style={{ color: "white" }}>Add User</Button>
-          </Link> */}
+
+          <Button onClick={handleOpenModal} style={{ color: "white" }}>
+            Add User
+          </Button>
+          <CreateModal open={openModal} handleClose={handleCloseModal} />
         </Toolbar>
       </AppBar>
     </Box>

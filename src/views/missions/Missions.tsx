@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 
 const Missions = () => {
   const re = UseGetMissionList();
-  const dragonList = re.missionList;
+  const missionList = re.missionList;
   // console.log("::::::::::ssss ", dragonList[0].active.toString());
   // const act = dragonList[0].active === true ? "Active" : "Not Active";
   // console.log(":::::::::: ", act);
@@ -20,7 +20,7 @@ const Missions = () => {
   return (
     <TableContainer component={Paper}>
       <Typography variant="h3" component="div" align="center">
-        Dragon List
+        Mission List
       </Typography>
       <Table align="center" sx={{ width: 700 }} aria-label="simple table">
         <TableHead>
@@ -34,7 +34,7 @@ const Missions = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {dragonList.map((row) => (
+          {missionList.map((row) => (
             <TableRow
               key={row.mission_id}
               // sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
