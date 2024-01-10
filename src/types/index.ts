@@ -31,3 +31,8 @@ export interface MissionResponse {
   twitter: string;
   description: string;
 }
+
+export interface ModalComponentProps {
+  open: boolean;
+  handleClose: () => void;
+}

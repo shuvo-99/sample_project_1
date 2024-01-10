@@ -26,3 +26,12 @@ export const getMissionList = async () => {
   console.log(response?.data);
   return response?.data;
 };
+
+export const postUser = async () => {
+  const response = await axiosService({
+    url: `/api/v1/administration/addUser`,
+    method: "post",
+  });
+  console.log(response?.data);
+  // return response?.data;
+};

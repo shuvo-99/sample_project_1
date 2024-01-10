@@ -11,8 +11,15 @@ import FlagCircleIcon from "@mui/icons-material/FlagCircle";
 import RocketIcon from "@mui/icons-material/Rocket";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Link } from "react-router-dom";
+import ModalComponent from "../views/component/ModalComponent";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static" sx={{ backgroundColor: "#616f71" }}>
@@ -55,9 +62,15 @@ const Navbar = () => {
               </Button>
             </Link>
           </Typography>
-          {/* <Link to="/createUser">
-            <Button style={{ color: "white" }}>Add User</Button>
-          </Link> */}
+          <Link to="/">
+            <Button style={{ color: "white" }} onClick={handleOpen}>
+              Add User
+            </Button>
+            <ModalComponent
+              open={open}
+              handleClose={handleClose}
+            ></ModalComponent>
+          </Link>
         </Toolbar>
       </AppBar>
     </Box>
