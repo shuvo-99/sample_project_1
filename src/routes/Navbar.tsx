@@ -10,33 +10,32 @@ import FlagCircleIcon from "@mui/icons-material/FlagCircle";
 import RocketIcon from "@mui/icons-material/Rocket";
 import PetsIcon from "@mui/icons-material/Pets";
 import { Link } from "react-router-dom";
-import ModalComponent from "../views/component/ModalComponent";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 // import Typography from "@mui/material/Typography";
-import { ModalComponentProps } from "../../types";
-import { Formik, useFormik, Form, Field } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
   Button,
   Dialog,
   FormControlLabel,
-  FormLabel,
   Radio,
-  RadioGroup,
   TextField,
 } from "@mui/material";
-import InputAdornment from "@mui/material/InputAdornment";
-import EventIcon from "@mui/icons-material/Event";
-import React from "react";
+import useAddUser from "../hooks/mutation/useAddUserData";
+import { UserCreationPayload } from "../types";
 
 const Navbar = () => {
+  const { mutateAsync } = useAddUser();
   // const [open, setOpen] = useState(false);
 
   // const handleOpen = () => setOpen(true);
   // const handleClose = () => setOpen(false);
+  const createUserAsynchronously = async (data: UserCreationPayload) => {
+    await mutateAsync(data);
+  };
 
   const [open, openchange] = useState(false);
   const functionopenpopup = () => {
@@ -91,25 +90,28 @@ const Navbar = () => {
     address: Yup.string().required("Required"),
   });
 
-  // const onSubmit = (values) => {
-  //   console.log("Form data", values);
-  // };
-  // const onSubmit={(values, { setSubmitting }) => {
-  //   setTimeout(() => {
-  //     alert(JSON.stringify(values, null, 2));
-  //     setSubmitting(false);
-  //   }, 400);
-  // }}
-
   const formik = useFormik({
     initialValues,
     validationSchema,
-    onSubmit: (values) => {
-      console.log("Submitted", values);
+    onSubmit: async (values) => {
+      try {
+        console.log("Submitting", values);
+        // Call the addUser function to handle the mutation and post the user data
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+        await createUserAsynchronously(values);
+        closepopup();
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        // Handle the error as needed (e.g., show an error message to the user)
+      }
     },
   });
 
-  console.log(formik.values);
+  useEffect(() => {
+    console.log(formik.errors);
+  }, [formik.errors]);
+
+  // console.log(formik.values);
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -374,15 +376,17 @@ const Navbar = () => {
                   </Formik> */}
                   <div>
                     <form onSubmit={formik.handleSubmit}>
+                      {/* User Name */}
                       <div>
                         <TextField
                           fullWidth
                           sx={{ marginBottom: 1 }}
                           id="userName"
-                          placeholder="userName"
+                          placeholder="User Name"
                           name="userName"
                           variant="filled"
                           onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
                           value={formik.values.userName}
                         />
                         {formik.errors.userName && formik.touched.userName && (
@@ -391,15 +395,37 @@ const Navbar = () => {
                           </div>
                         )}
                       </div>
+                      {/* First Name */}
                       <div>
                         <TextField
                           fullWidth
                           sx={{ marginBottom: 1 }}
-                          placeholder="lastname"
+                          placeholder="firstName"
+                          name="firstName"
+                          id="firstName"
+                          variant="filled"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.firstName}
+                        />
+                        {formik.errors.firstName &&
+                          formik.touched.firstName && (
+                            <div style={{ color: "red" }}>
+                              {formik.errors.firstName}
+                            </div>
+                          )}
+                      </div>
+                      {/* Last Name */}
+                      <div>
+                        <TextField
+                          fullWidth
+                          sx={{ marginBottom: 1 }}
+                          placeholder="Last Name"
                           name="lastName"
                           id="lastName"
                           variant="filled"
                           onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
                           value={formik.values.lastName}
                         />
                         {formik.errors.lastName && formik.touched.lastName && (
@@ -408,9 +434,147 @@ const Navbar = () => {
                           </div>
                         )}
                       </div>
-                      <button type="submit" onSubmit={formik.handleSubmit}>
+                      {/* Email */}
+                      <div>
+                        <TextField
+                          fullWidth
+                          sx={{ marginBottom: 1 }}
+                          placeholder="Email"
+                          name="email"
+                          id="email"
+                          variant="filled"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.email}
+                        />
+                        {formik.errors.email && formik.touched.email && (
+                          <div style={{ color: "red" }}>
+                            {formik.errors.email}
+                          </div>
+                        )}
+                      </div>
+                      {/* Password */}
+                      <div>
+                        <TextField
+                          fullWidth
+                          sx={{ marginBottom: 1 }}
+                          placeholder="Password"
+                          type="password"
+                          name="password"
+                          id="password"
+                          variant="filled"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.password}
+                        />
+                        {formik.errors.password && formik.touched.password && (
+                          <div style={{ color: "red" }}>
+                            {formik.errors.password}
+                          </div>
+                        )}
+                      </div>
+                      {/* Contact */}
+                      <div>
+                        <TextField
+                          fullWidth
+                          sx={{ marginBottom: 1 }}
+                          placeholder="contactNo"
+                          name="contactNo"
+                          id="contactNo"
+                          variant="filled"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.contactNo}
+                        />
+                        {formik.errors.contactNo &&
+                          formik.touched.contactNo && (
+                            <div style={{ color: "red" }}>
+                              {formik.errors.contactNo}
+                            </div>
+                          )}
+                      </div>
+                      {/* Date */}
+                      <div>
+                        <TextField
+                          fullWidth
+                          sx={{ marginBottom: 1 }}
+                          placeholder="dob"
+                          type="date"
+                          name="dob"
+                          id="dob"
+                          variant="filled"
+                          onChange={formik.handleChange}
+                          onBlur={formik.handleBlur}
+                          value={formik.values.dob}
+                        />
+                        {formik.errors.dob && formik.touched.dob && (
+                          <div style={{ color: "red" }}>
+                            {formik.errors.dob}
+                          </div>
+                        )}
+                      </div>
+                      {/* isSuperUser */}
+                      <div style={{ marginTop: "2px" }}>
+                        <label htmlFor="">Are you Super User?</label>
+                        <div>
+                          <FormControlLabel
+                            control={
+                              <Radio
+                                checked={formik.values.isSuperuser === "true"}
+                                onChange={formik.handleChange}
+                                value="true"
+                                name="isSuperuser"
+                              />
+                            }
+                            label="True"
+                          />
+                          <FormControlLabel
+                            control={
+                              <Radio
+                                checked={formik.values.isSuperuser === "false"}
+                                onChange={formik.handleChange}
+                                value="false"
+                                name="isSuperuser"
+                              />
+                            }
+                            label="False"
+                          />
+                        </div>
+                        {formik.errors.isSuperuser &&
+                          formik.touched.isSuperuser && (
+                            <div style={{ color: "red" }}>
+                              {formik.errors.isSuperuser}
+                            </div>
+                          )}
+                      </div>
+                      {/* address */}
+                      <div>
+                        <TextField
+                          fullWidth
+                          sx={{ marginBottom: 1 }}
+                          placeholder="address"
+                          // type="date"
+                          name="address"
+                          id="address"
+                          variant="filled"
+                          onChange={formik.handleChange}
+                          value={formik.values.address}
+                          onBlur={formik.handleBlur}
+                        />
+                        {formik.errors.address && formik.touched.address && (
+                          <div style={{ color: "red" }}>
+                            {formik.errors.address}
+                          </div>
+                        )}
+                      </div>
+
+                      <Button
+                        style={{ justifyContent: "center" }}
+                        variant="contained"
+                        type="submit"
+                      >
                         Submit
-                      </button>
+                      </Button>
                     </form>
                   </div>
                 </Box>

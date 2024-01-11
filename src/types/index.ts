@@ -36,3 +36,16 @@ export interface ModalComponentProps {
   open: boolean;
   handleClose: () => void;
 }
+
+export interface UserCreationPayload {
+  userName: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  contactNo: string;
+  dob: string;
+  isSuperuser: string;
+  address: string;
+  roles: string[];
+}

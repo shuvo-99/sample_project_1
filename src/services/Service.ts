@@ -1,3 +1,5 @@
+import { UserCreationPayload } from "../types";
+import axiosPost from "../utils/axiosPost";
 import axiosService from "../utils/axiosService";
 
 export const getDragonList = async () => {
@@ -27,11 +29,17 @@ export const getMissionList = async () => {
   return response?.data;
 };
 
-export const postUser = async () => {
-  const response = await axiosService({
-    url: `/api/v1/administration/addUser`,
-    method: "post",
-  });
-  console.log(response?.data);
+export const postUser = async (userData: UserCreationPayload) => {
+  try {
+    const response = await axiosPost.post(
+      "/api/v1/administration/addUser",
+      userData
+    );
+    console.log("Posted", response?.data);
+    return response?.data;
+  } catch (error) {
+    console.error("Error posting user:", error);
+    throw error; // Rethrow the error for handling in the calling function
+  }
   // return response?.data;
 };
